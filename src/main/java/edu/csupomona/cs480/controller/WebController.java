@@ -52,6 +52,15 @@ public class WebController {
 		return "OK";
 	}
 
+	@RequestMapping(value = "/cs480/grocery", method = RequestMethod.GET)
+	String groceryCheck() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "Grocery!!!";
+	}
+	
+	
 	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
