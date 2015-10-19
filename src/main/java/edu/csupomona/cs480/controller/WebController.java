@@ -59,9 +59,6 @@ public class WebController {
 	
 	@RequestMapping(value = "/cs480/grocery", method = RequestMethod.GET)
 	String groceryCheck() {
-		// You can replace this with other string,
-		// and run the application locally to check your changes
-		// with the URL: http://localhost:8080/
 		return "Grocery!!!";
 	}
 
