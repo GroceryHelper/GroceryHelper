@@ -146,5 +146,4 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
-
 }
