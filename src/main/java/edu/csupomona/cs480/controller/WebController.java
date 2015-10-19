@@ -57,7 +57,6 @@ public class WebController {
 		return "Samuel is an owl. Woo woo!";
 	}
 	
-
 	@RequestMapping(value = "/cs480/grocery", method = RequestMethod.GET)
 	String groceryCheck() {
 		// You can replace this with other string,
