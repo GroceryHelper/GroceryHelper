@@ -1,7 +1,12 @@
 package edu.csupomona.cs480.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,6 +72,37 @@ public class WebController {
 	  	return "Jasmeet Kaur, Samuel Jih, Su Jeong Ha";
 	}	
 	
+	// Testing jsoup 
+	@RequestMapping(value = "/cs480/jsoup", method = RequestMethod.GET)
+	String jSoupTest(){
+		Document doc;
+		String title = null;
+		try {
+
+			// need http protocol
+			doc = Jsoup.connect("http://google.com").get();
+
+			// get page title
+			title = doc.title();
+			System.out.println("title : " + title);
+
+			// get all links
+			Elements links = doc.select("a[href]");
+			for (Element link : links) {
+
+				// get the value from href attribute
+				System.out.println("\nlink : " + link.attr("href"));
+				System.out.println("text : " + link.text());
+
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return title + " scraped";
+	}
+	// END Testing jsoup 
+	
 	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
@@ -125,6 +161,8 @@ public class WebController {
 		userManager.deleteUser(userId);
 	}
 
+	
+	
 	/**
 	 * This API lists all the users in the current database.
 	 *
@@ -134,6 +172,8 @@ public class WebController {
 	List<User> listAllUsers() {
 		return userManager.listAllUsers();
 	}
+	
+	
 
 	/*********** Web UI Test Utility **********/
 	/**
