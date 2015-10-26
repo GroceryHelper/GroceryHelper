@@ -2,6 +2,7 @@ package edu.csupomona.cs480.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.common.base.Joiner;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.collect.Tables;
 
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.User;
@@ -101,7 +107,34 @@ public class WebController {
 		}
 		return title + " scraped";
 	}
-	// END Testing jsoup 
+	// END Testing jsoup
+        
+        @RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
+        String getPrice(String search) {
+        	Table<String, String, Double> table = HashBasedTable.create();
+        	Double itemPrice = 0.0;
+        	
+        	table.put("Fruits", "Apple", 0.99);
+        	table.put("Fruits", "Orange", 1.49);
+        	table.put("Fruits", "Banana", 2.00);
+        	
+        	Table transponedTable = Tables.transpose(table);
+        	
+        	Map<String, Double> fruits =  table.row("Fruits");
+
+            System.out.println("List of Fruits");
+            
+            for(Map.Entry<String, Double> entry : ((Map<String, Double>) table).entrySet()) {
+               if (search.equals(entry.getKey())) {
+            	    itemPrice = entry.getValue();
+               }
+            }
+            
+            return ("This week's low price for " + search + " is " + itemPrice);
+        }
+        	
+        
+        
 	
 	/**
 	 * This is a simple example of how to use a data manager
