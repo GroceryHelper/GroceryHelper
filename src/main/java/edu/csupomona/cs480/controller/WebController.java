@@ -85,7 +85,7 @@ public class WebController {
 		String title = null;
 		String lastItemText = null;
 		try {
-
+			// Albertson's data
 			doc = Jsoup.connect("http://albertsons.mywebgrocer.com/Circular/Chino-Hills-Los-Serranos-and-Soquel-Canyon/C5C273633/Weekly/1").get();
 			
 			// get page title
