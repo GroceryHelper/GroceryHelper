@@ -130,9 +130,6 @@ public class WebController {
 		return ("This week's low price for " + search + " is " + itemPrice);
 	}
 
-
-
-
 	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
@@ -202,7 +199,6 @@ public class WebController {
 	List<User> listAllUsers() {
 		return userManager.listAllUsers();
 	}
-
 
 
 	/*********** Web UI Test Utility **********/
