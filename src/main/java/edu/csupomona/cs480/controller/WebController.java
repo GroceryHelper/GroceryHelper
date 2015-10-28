@@ -62,12 +62,12 @@ public class WebController {
 		// with the URL: http://localhost:8080/
 		return "OK";
 	}
-	
+
 	@RequestMapping(value = "/cs480/ping2", method = RequestMethod.GET)
 	String showInfo() {
 		return "Samuel is an owl. Woo woo!";
 	}
-	
+
 	@RequestMapping(value = "/cs480/grocery", method = RequestMethod.GET)
 	String groceryCheck() {
 		return "Grocery!!!";
@@ -75,67 +75,64 @@ public class WebController {
 
 	@RequestMapping(value = "/cs480/ping1", method = RequestMethod.GET)
 	String teamMembers(){
-	  	return "Jasmeet Kaur, Samuel Jih, Su Jeong Ha";
+		return "Jasmeet Kaur, Samuel Jih, Su Jeong Ha";
 	}	
-	
+
 	// Testing jsoup 
 	@RequestMapping(value = "/cs480/jsoup", method = RequestMethod.GET)
 	String jSoupTest(){
 		Document doc;
 		String title = null;
+		String lastItemText = null;
 		try {
 
-			// need http protocol
-			doc = Jsoup.connect("http://google.com").get();
-
+			doc = Jsoup.connect("http://albertsons.mywebgrocer.com/Circular/Chino-Hills-Los-Serranos-and-Soquel-Canyon/C5C273633/Weekly/1").get();
+			
 			// get page title
 			title = doc.title();
 			System.out.println("title : " + title);
+			
+			Elements items = doc.select("p");
+			for (Element item : items) {
 
-			// get all links
-			Elements links = doc.select("a[href]");
-			for (Element link : links) {
-
-				// get the value from href attribute
-				System.out.println("\nlink : " + link.attr("href"));
-				System.out.println("text : " + link.text());
-
+				System.out.println("item text : " + item.text());
+				lastItemText = item.text();
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return title + " scraped";
+		return lastItemText;
 	}
 	// END Testing jsoup
-        
-        @RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
-        String getPrice(String search) {
-        	Table<String, String, Double> table = HashBasedTable.create();
-        	Double itemPrice = 0.0;
-        	
-        	table.put("Fruits", "Apple", 0.99);
-        	table.put("Fruits", "Orange", 1.49);
-        	table.put("Fruits", "Banana", 2.00);
-        	
-        	Table transponedTable = Tables.transpose(table);
-        	
-        	Map<String, Double> fruits =  table.row("Fruits");
 
-            System.out.println("List of Fruits");
-            
-            for(Map.Entry<String, Double> entry : ((Map<String, Double>) table).entrySet()) {
-               if (search.equals(entry.getKey())) {
-            	    itemPrice = entry.getValue();
-               }
-            }
-            
-            return ("This week's low price for " + search + " is " + itemPrice);
-        }
-        	
-        
-        
-	
+	@RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
+	String getPrice(String search) {
+		Table<String, String, Double> table = HashBasedTable.create();
+		Double itemPrice = 0.0;
+
+		table.put("Fruits", "Apple", 0.99);
+		table.put("Fruits", "Orange", 1.49);
+		table.put("Fruits", "Banana", 2.00);
+
+		Table transponedTable = Tables.transpose(table);
+
+		Map<String, Double> fruits =  table.row("Fruits");
+
+		System.out.println("List of Fruits");
+
+		for(Map.Entry<String, Double> entry : ((Map<String, Double>) table).entrySet()) {
+			if (search.equals(entry.getKey())) {
+				itemPrice = entry.getValue();
+			}
+		}
+
+		return ("This week's low price for " + search + " is " + itemPrice);
+	}
+
+
+
+
 	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
@@ -194,8 +191,8 @@ public class WebController {
 		userManager.deleteUser(userId);
 	}
 
-	
-	
+
+
 	/**
 	 * This API lists all the users in the current database.
 	 *
@@ -205,8 +202,8 @@ public class WebController {
 	List<User> listAllUsers() {
 		return userManager.listAllUsers();
 	}
-	
-	
+
+
 
 	/*********** Web UI Test Utility **********/
 	/**
