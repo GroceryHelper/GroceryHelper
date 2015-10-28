@@ -216,4 +216,11 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/cs480/groceryhome", method = RequestMethod.GET)
+	ModelAndView getGroceryHomepage() {
+		ModelAndView modelAndView = new ModelAndView("home2");
+//		modelAndView.addObject("users", listAllUsers());
+		return modelAndView;
+	}
 }
