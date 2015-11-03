@@ -21,13 +21,15 @@
 	    <hr>
 
 	    <div>
+	    	<input type="text" id="item_name" ng-model="itemToSearch"><button ng-click="getItems()">Get</button>
 	        <div>
-	            <label>User List</label>
+	        	
+	            <label>Item List</label>
 	            <table border="1">
 	                <tr>
 	                    <td>ID</td>
-	                    <td>Name</td>
-	                    <td>Major</td>
+	                    <td>Item Name</td>
+	                    <td>Price</td>
 	                    <td>Creation Time</td>
 	                    <td>Delete</td>
 	                </tr>
@@ -35,9 +37,10 @@
 	                <tr ng-repeat="user in users">
 	                    <td>{{user.id}}</td>
 	                    <td>{{user.name}}</td>
-	                    <td>{{user.major}}</td>
+	                    <td>{{user.price}}</td>
 	                    <td>{{user.creationTime}}</td>
-                        <td><button ng-click="deleteUser(user.id)">Delete</button></td>
+	                    
+                        <td><button ng-click="deleteItem(user.id)">Delete</button></td>
 	                </tr>
 	            </table>
 	        </div>
@@ -45,19 +48,19 @@
 	        <hr>
 
 	        <div>
-	            <label>Add User</label>
+	            <label>Add Item</label>
 	            <table border="1">
 	                <tr>
 	                    <td>ID</td>
-	                    <td>Name</td>
-	                    <td>Major</td>
+	                    <td>Item Name</td>
+	                    <td>Price</td>
 	                    <td>Add</td>
 	                </tr>
 	                <tr>
 	                    <td><input type="text" ng-model="new_id"></td>
 	                    <td><input type="text" ng-model="new_name"></td>
-	                    <td><input type="text" ng-model="new_major"></td>
-	                    <td><button ng-click="addUser()">Add</button></td>
+	                    <td><input type="text" ng-model="new_price"></td>
+	                    <td><button ng-click="addItem()">Add</button></td>
 	                </tr>
 	            </table>
 	        </div>
@@ -65,13 +68,13 @@
 	        <hr>
 
 	        <div>
-	            <label>Query User</label>
-	            <input type="text" id="query_id" ng-model="userIdToSearch"><button ng-click="getUser()">Get</button>
+	            <label>Query Item</label>
+	            <input type="text" id="query_id" ng-model="userIdToSearch"><button ng-click="getItem()">Get</button>
 	            <table border="1">
 	                <tr>
 	                    <td>ID</td>
 	                    <td>Name</td>
-	                    <td>Major</td>
+	                    <td>Price</td>
 	                </tr>
 	                <tr>
 	                    <td><label>{{founduser.id}}</label></td>

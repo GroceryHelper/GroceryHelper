@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import edu.csupomona.cs480.data.provider.FSUserManager;
-import edu.csupomona.cs480.data.provider.UserManager;
+import edu.csupomona.cs480.data.provider.FSItemManager;
+import edu.csupomona.cs480.data.provider.ItemManager;
 
 @Configuration
 @EnableAutoConfiguration
@@ -21,8 +21,8 @@ public class App {
      * annotation is applied.
      */
     @Bean
-    public UserManager userManager() {
-        UserManager userManager = new FSUserManager();
+    public ItemManager userManager() {
+        ItemManager userManager = new FSItemManager();
         return userManager;
     }
 

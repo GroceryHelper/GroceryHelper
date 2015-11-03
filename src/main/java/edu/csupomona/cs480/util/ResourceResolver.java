@@ -16,6 +16,7 @@ public class ResourceResolver {
 	 * @param userId
 	 * @return
 	 */
+	
 	public static File getUserFile() {
 		File file = new File(BASE_DIR + "/" + "user-map.json");
 		if (!file.getParentFile().exists()) {
@@ -23,4 +24,13 @@ public class ResourceResolver {
 		}
 		return file;
 	}
+	
+	public static File getItemFile() {
+		File file = new File(BASE_DIR + "/" + "item-map.json");
+		if (!file.getParentFile().exists()) {
+			file.getParentFile().mkdirs();
+		}
+		return file;
+	}
+
 }

@@ -22,8 +22,8 @@ import com.google.common.collect.Table;
 import com.google.common.collect.Tables;
 
 import edu.csupomona.cs480.App;
-import edu.csupomona.cs480.data.User;
-import edu.csupomona.cs480.data.provider.UserManager;
+import edu.csupomona.cs480.data.Item;
+import edu.csupomona.cs480.data.provider.ItemManager;
 
 
 /**
@@ -46,7 +46,7 @@ public class WebController {
 	 * the {@link App} class.
 	 */
 	@Autowired
-	private UserManager userManager;
+	private ItemManager userManager;
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -140,9 +140,10 @@ public class WebController {
 	 * Try it in your web browser:
 	 * 	http://localhost:8080/cs480/user/user101
 	 */
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.GET)
-	User getUser(@PathVariable("userId") String userId) {
-		User user = userManager.getUser(userId);
+	
+	@RequestMapping(value = "/cs480/item/{itemId}", method = RequestMethod.GET)
+	Item getUser(@PathVariable("itemId") String itemId) {
+		Item user = userManager.getItem(itemId);
 		return user;
 	}
 
@@ -161,19 +162,19 @@ public class WebController {
 	 *
 	 * @param id
 	 * @param name
-	 * @param major
+	 * @param price
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
-	User updateUser(
+	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.POST)
+	Item updateUser(
 			@PathVariable("userId") String id,
 			@RequestParam("name") String name,
-			@RequestParam(value = "major", required = false) String major) {
-		User user = new User();
+			@RequestParam(value = "price", required = false) String price) {
+		Item user = new Item();
 		user.setId(id);
-		user.setMajor(major);
+		user.setPrice(price);
 		user.setName(name);
-		userManager.updateUser(user);
+		userManager.updateItem(user);
 		return user;
 	}
 
@@ -182,10 +183,10 @@ public class WebController {
 	 *
 	 * @param userId
 	 */
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.DELETE)
 	void deleteUser(
 			@PathVariable("userId") String userId) {
-		userManager.deleteUser(userId);
+		userManager.deleteItem(userId);
 	}
 
 
@@ -195,9 +196,10 @@ public class WebController {
 	 *
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
-	List<User> listAllUsers() {
-		return userManager.listAllUsers();
+
+	@RequestMapping(value = "/cs480/items/list", method = RequestMethod.GET)
+	List<Item> listAllUsers() {
+		return userManager.listAllItems();
 	}
 
 
@@ -213,10 +215,4 @@ public class WebController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/cs480/groceryhome", method = RequestMethod.GET)
-	ModelAndView getGroceryHomepage() {
-		ModelAndView modelAndView = new ModelAndView("home2");
-//		modelAndView.addObject("users", listAllUsers());
-		return modelAndView;
-	}
 }
