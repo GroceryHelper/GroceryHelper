@@ -46,7 +46,7 @@ public class WebController {
 	 * the {@link App} class.
 	 */
 	@Autowired
-	private ItemManager userManager;
+	private ItemManager itemManager;
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -142,10 +142,13 @@ public class WebController {
 	 */
 	
 	@RequestMapping(value = "/cs480/item/{itemId}", method = RequestMethod.GET)
-	Item getUser(@PathVariable("itemId") String itemId) {
-		Item user = userManager.getItem(itemId);
-		return user;
+	Item getItem(@PathVariable("itemId") String itemId) {
+		Item item = itemManager.getItem(itemId);
+		return item;
 	}
+	
+	
+	
 
 	/**
 	 * This is an example of sending an HTTP POST request to
@@ -166,18 +169,39 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.POST)
-	Item updateUser(
+	Item updateItem(
 			@PathVariable("userId") String id,
 			@RequestParam("name") String name,
 			@RequestParam(value = "price", required = false) String price) {
-		Item user = new Item();
-		user.setId(id);
-		user.setPrice(price);
-		user.setName(name);
-		userManager.updateItem(user);
-		return user;
+		Item item = new Item();
+		item.setId(id);
+		item.setPrice(price);
+		item.setName(name);
+		itemManager.updateItem(item);
+		return item;
 	}
+	
+	// this is to save zip user entered
+	@RequestMapping(value = "/cs480/zip/{zipCode}", method = RequestMethod.POST)
+	String saveZip(
+			@PathVariable("zipCode") String zipCode,
+			@RequestParam("zipCode") String zip) {
+//		Item user = new Item();
+//		user.setId(id);
+//		user.setPrice(price);
+//		user.setName(name);
+//		userManager.updateItem(user);
+		return zip;
+	}
+	
 
+	@RequestMapping(value = "/cs480/zip/{zipCode}", method = RequestMethod.GET)
+	String getZip(@PathVariable("zipCode") String zip) {
+//		Item user = userManager.getItem(itemId);
+		return zip;
+	}
+	
+	
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
 	 *
@@ -186,7 +210,7 @@ public class WebController {
 	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.DELETE)
 	void deleteUser(
 			@PathVariable("userId") String userId) {
-		userManager.deleteItem(userId);
+		itemManager.deleteItem(userId);
 	}
 
 
@@ -198,8 +222,8 @@ public class WebController {
 	 */
 
 	@RequestMapping(value = "/cs480/items/list", method = RequestMethod.GET)
-	List<Item> listAllUsers() {
-		return userManager.listAllItems();
+	List<Item> listAllItems() {
+		return itemManager.listAllItems();
 	}
 
 
@@ -211,7 +235,7 @@ public class WebController {
 	@RequestMapping(value = "/cs480/home", method = RequestMethod.GET)
 	ModelAndView getUserHomepage() {
 		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("users", listAllUsers());
+		modelAndView.addObject("users", listAllItems());
 		return modelAndView;
 	}
 	

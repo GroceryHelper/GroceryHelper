@@ -1,13 +1,24 @@
 <html ng-app="cs480App">
 	<!-- This page uses AngularJS -->
 	<head>
-	    <title>CS480 Demo HomePage using AngularJS</title>
+	    <title>Testing Page</title>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 	    <script src="/js/home-control-ajs.js"></script>
+	    
+	    <style>
+		.center {
+		    margin: auto;
+		    width: 60%;
+		    border:3px solid #73AD21;
+		    padding: 10px;
+		}
+		</style>
+	    
+	    
 	</head>
 
 	<body ng-controller="UserCtrl">
-		<div>
+<!-- 		<div>
 	        This is a simple page to demonstrate the web UI development.
 	        The key tools and techniques used include:
 	        <ul>
@@ -18,10 +29,15 @@
 	        </ul>
 	    </div>
 
-	    <hr>
+	    <hr> -->
 
 	    <div>
-	    	<input type="text" id="item_name" ng-model="itemToSearch"><button ng-click="getItems()">Get</button>
+	    	<label>ZIP : </label><input type="text" id="zip_code" ng-model="zipEntered"><button ng-click="saveZip()">OK</button>
+	    	<hr>
+	    	
+	    	<!-- Fix it later -->
+	    	<label>Zip you entered: </label> <td name="zipResult">{{enteredZip}}</td>
+	    	<hr>
 	        <div>
 	        	
 	            <label>Item List</label>
@@ -68,18 +84,20 @@
 	        <hr>
 
 	        <div>
-	            <label>Query Item</label>
-	            <input type="text" id="query_id" ng-model="userIdToSearch"><button ng-click="getItem()">Get</button>
+	            <label>Search Item</label>
+				<!-- userIdToSearch -->	            
+	            <input type="text" id="query_id" ng-model="itemNameToSearch">
+	            <button ng-click="loadUsers()">Get</button>
 	            <table border="1">
 	                <tr>
 	                    <td>ID</td>
 	                    <td>Name</td>
 	                    <td>Price</td>
 	                </tr>
-	                <tr>
-	                    <td><label>{{founduser.id}}</label></td>
-	                    <td><label>{{founduser.name}}</label></td>
-	                    <td><label>{{founduser.major}}</label></td>
+	                <tr ng-repeat="user in users | filter:itemNameToSearch">
+	                    <td><label>{{user.id}}</label></td>
+	                    <td><label>{{user.name}}</label></td>
+	                    <td><label>{{user.price}}</label></td>
 	                </tr>
 	            </table>
 	        </div>
