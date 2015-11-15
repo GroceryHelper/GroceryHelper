@@ -168,13 +168,15 @@ public class WebController {
 	 * @param price
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/cs480/item/{itemId}", method = RequestMethod.POST)
 	Item updateItem(
-			@PathVariable("userId") String id,
-			@RequestParam("name") String name,
+			@PathVariable("itemId") String id,
+			@RequestParam("storeCode") String code,
+			@RequestParam(value="name", required = false) String name,
 			@RequestParam(value = "price", required = false) String price) {
 		Item item = new Item();
 		item.setId(id);
+		item.setStoreCode(code);
 		item.setPrice(price);
 		item.setName(name);
 		itemManager.updateItem(item);
