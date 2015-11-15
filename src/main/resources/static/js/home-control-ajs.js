@@ -6,15 +6,7 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
 
 //	changed into something related to items
 	
-	var id = polling_func();
-	  function polling_func()
-	  {
-		  var d = new Date();
-		  var n = d.getTime();
-	      return n;
-	  }
-	
-	  var counter = 0;
+
 	// works
   $scope.loadUsers = function() {
 	  $http.get("cs480/items/list")
@@ -32,12 +24,18 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
   
   // works
   $scope.addItem = function() {
-//	  $http.post("cs480/item/" + $scope.new_id + "?storeCode=" + $scope.new_storeCode + "&name=" + $scope.new_name + "&price=" + $scope.new_price)
 	  $http.post("cs480/item/"  + $scope.new_id + "?storeCode=" + $scope.new_storeCode + "&name=" + $scope.new_name + "&price=" + $scope.new_price)
 	  	.success(function(data){
 	  		$scope.loadUsers();
 	  	});
   }
+  
+
+  var count = 0;
+ function getId() {
+	 return count++;
+ }
+
   
   // works
   $scope.deleteItem = function(itemId) {
@@ -57,10 +55,7 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
 	  		$scope.zip = data;
 	  	});
   }
-  
-  
-  
-//  polling_func();
- 
+
+
   
 });
