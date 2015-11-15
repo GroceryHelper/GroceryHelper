@@ -22,7 +22,9 @@ import com.google.common.collect.Table;
 import com.google.common.collect.Tables;
 
 import edu.csupomona.cs480.App;
+import edu.csupomona.cs480.data.GroceryList;
 import edu.csupomona.cs480.data.Item;
+import edu.csupomona.cs480.data.provider.GroceryListManager;
 import edu.csupomona.cs480.data.provider.ItemManager;
 
 
@@ -47,6 +49,9 @@ public class WebController {
 	 */
 	@Autowired
 	private ItemManager itemManager;
+	
+//	@Autowired
+//	private GroceryListManager groceryListManager;
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -168,13 +173,15 @@ public class WebController {
 	 * @param price
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/cs480/item/{itemId}", method = RequestMethod.POST)
 	Item updateItem(
-			@PathVariable("userId") String id,
-			@RequestParam("name") String name,
+			@PathVariable("itemId") String id,
+			@RequestParam("storeCode") String code,
+			@RequestParam(value="name", required = false) String name,
 			@RequestParam(value = "price", required = false) String price) {
 		Item item = new Item();
 		item.setId(id);
+		item.setStoreCode(code);
 		item.setPrice(price);
 		item.setName(name);
 		itemManager.updateItem(item);
@@ -238,5 +245,17 @@ public class WebController {
 		modelAndView.addObject("users", listAllItems());
 		return modelAndView;
 	}
+	
+	
+	@RequestMapping(value = "/cs480/groceryList/", method = RequestMethod.POST)
+	GroceryList updateGroceryList(
+		
+			@RequestParam("item") String itemToList) {
+		GroceryList groceryList = new GroceryList();
+		groceryList.add(itemToList);
+//		groceryListManager.updateList(groceryList);
+		return groceryList;
+	}
+	
 	
 }

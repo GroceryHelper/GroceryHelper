@@ -13,16 +13,13 @@ public class UserTest {
 
 	@Test
 	public void test() {
-		
-		// Simple test case for a simple class
-		
-		final String id = "10101010";
-		final String name = "Grocery Helper";
-		final String major = "CS";
-		final String creationTime = new Date(System.currentTimeMillis()).toString();
+		String id = "0101010";
+		String name = "GroceryHelper";
+		String major = "CS";
+		String creationTime = new Date(System.currentTimeMillis()).toString();
 		
 		Item user = new Item();
-		user.setId(id);
+//		user.setId(id);
 		user.setName(name);
 		user.setPrice(major);
 		user.setCreationTime(creationTime);
