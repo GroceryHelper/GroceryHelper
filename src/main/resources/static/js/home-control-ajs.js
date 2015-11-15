@@ -6,15 +6,7 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
 
 //	changed into something related to items
 	
-	var id = polling_func();
-	  function polling_func()
-	  {
-		  var d = new Date();
-		  var n = d.getTime();
-	      return n;
-	  }
 	
-	  var counter = 0;
 	// works
   $scope.loadUsers = function() {
 	  $http.get("cs480/items/list")

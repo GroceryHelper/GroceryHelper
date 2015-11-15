@@ -19,7 +19,7 @@ public class UserTest {
 		String creationTime = new Date(System.currentTimeMillis()).toString();
 		
 		Item user = new Item();
-//		user.setId(id);
+		user.setId(id);
 		user.setName(name);
 		user.setPrice(major);
 		user.setCreationTime(creationTime);
