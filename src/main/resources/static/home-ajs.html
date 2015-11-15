@@ -15,12 +15,11 @@
 	<div>
 		<label>ZIP : </label><input type="text" id="zip_code"
 			ng-model="zipEntered">
-		<button ng-click="saveZip()">OK</button>
 		<hr>
 
 		<!-- Fix it later -->
-		<label>Zip you entered: </label>
-		<td name="zipResult">{{enteredZip}}</td>
+		<label>Zip you entered: </label><pre>{{zipEntered}}</pre>
+		<button ng-click="saveZip()">OK</button>
 		<hr>
 		
 		<div>
@@ -29,13 +28,10 @@
 			<textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
 			<pre>{{ list | json }}</pre>
 
-		
-
 			<!-- <tr ng-repeat="item in list">
 				<td>{{item}}</td>
 				<td><button ng-click="deleteItem(user.id)">Delete</button></td>
 			</tr> -->
-
 
 		</div>
 		
