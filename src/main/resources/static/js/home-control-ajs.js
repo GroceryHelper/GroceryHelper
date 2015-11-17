@@ -2,16 +2,16 @@
 // This is the trending technology
 var cs480App = angular.module('cs480App', []);
 
-cs480App.controller('UserCtrl', function ($scope, $http) {
+cs480App.controller('ItemCtrl', function ($scope, $http) {
 
 //	changed into something related to items
 	
 
 	// works
-  $scope.loadUsers = function() {
+  $scope.loadItems = function() {
 	  $http.get("cs480/items/list")
 	  	.success(function(data){
-	  		$scope.users = data;
+	  		$scope.items = data;
 	  	});
   }
   // works
@@ -26,7 +26,7 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
   $scope.addItem = function() {
 	  $http.post("cs480/item/"  + $scope.new_id + "?storeCode=" + $scope.new_storeCode + "&name=" + $scope.new_name + "&price=" + $scope.new_price)
 	  	.success(function(data){
-	  		$scope.loadUsers();
+	  		$scope.loadItems();
 	  	});
   }
 
@@ -39,11 +39,11 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
   $scope.deleteItem = function(itemId) {
 	  $http.delete("cs480/item/" + itemId)
 	  	.success(function(data){
-	  		$scope.loadUsers();
+	  		$scope.loadItems();
 	  	});
   }
   // dont know what it exactly does
-  $scope.loadUsers();
+  $scope.loadItems();
   
   
   // below is related to zip code
@@ -53,5 +53,4 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
 	  		$scope.zip = data;
 	  	});
   }
-
 });

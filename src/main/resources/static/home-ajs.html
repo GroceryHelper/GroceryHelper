@@ -9,7 +9,7 @@
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
-<body ng-controller="UserCtrl">
+<body ng-controller="ItemCtrl">
 	<hr>
 
 	<div>
@@ -32,7 +32,6 @@
 				<td>{{item}}</td>
 				<td><button ng-click="deleteItem(user.id)">Delete</button></td>
 			</tr> -->
-
 		</div>
 			
 		<hr>
@@ -46,7 +45,7 @@
 			
 			<input type="text" id="query_store" ng-model="storeToSearch">
 			
-			<button ng-click="loadUsers()">Get</button>
+			<button ng-click="loadItems()">Get</button>
 			<hr>
 			<table border="1">
 				<tr>
@@ -55,11 +54,11 @@
 					<td>Price</td>
 					<td>Store Code</td>
 				</tr>
-				<tr ng-repeat="user in users | filter:itemNameToSearch | filter:storeToSearch">
+				<tr ng-repeat="item in items | filter:itemNameToSearch | filter:storeToSearch">
 					<!-- <td><label>{{user.id}}</label></td> -->
-					<td><label>{{user.name}}</label></td>
-					<td><label>{{user.price}}</label></td>
-					<td><label>{{user.storeCode}}</label></td>
+					<td><label>{{item.name}}</label></td>
+					<td><label>{{item.price}}</label></td>
+					<td><label>{{item.storeCode}}</label></td>
 				</tr>
 			</table>
 		</div>

@@ -48,9 +48,6 @@ public class WebController {
 	 */
 	@Autowired
 	private ItemManager itemManager;
-	
-//	@Autowired
-//	private GroceryListManager groceryListManager;
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -186,6 +183,17 @@ public class WebController {
 		return item;
 	}
 	
+	/**
+	 * This API deletes the user. It uses HTTP DELETE method.
+	 *
+	 * @param userId
+	 */
+	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.DELETE)
+	void deleteItem(
+			@PathVariable("userId") String userId) {
+		itemManager.deleteItem(userId);
+	}
+	
 	static int count = 0;
 	String getId() {
 		return Integer.toString(count++);
@@ -196,34 +204,14 @@ public class WebController {
 	String saveZip(
 			@PathVariable("zipCode") String zipCode,
 			@RequestParam("zipCode") String zip) {
-//		Item user = new Item();
-//		user.setId(id);
-//		user.setPrice(price);
-//		user.setName(name);
-//		userManager.updateItem(user);
 		return zip;
 	}
 	
 
 	@RequestMapping(value = "/cs480/zip/{zipCode}", method = RequestMethod.GET)
 	String getZip(@PathVariable("zipCode") String zip) {
-//		Item user = userManager.getItem(itemId);
 		return zip;
 	}
-	
-	
-	/**
-	 * This API deletes the user. It uses HTTP DELETE method.
-	 *
-	 * @param userId
-	 */
-	@RequestMapping(value = "/cs480/item/{userId}", method = RequestMethod.DELETE)
-	void deleteUser(
-			@PathVariable("userId") String userId) {
-		itemManager.deleteItem(userId);
-	}
-
-
 
 	/**
 	 * This API lists all the users in the current database.
@@ -248,9 +236,5 @@ public class WebController {
 		modelAndView.addObject("users", listAllItems());
 		return modelAndView;
 	}
-	
-	
-
-	
 	
 }

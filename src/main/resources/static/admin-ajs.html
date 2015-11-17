@@ -9,7 +9,7 @@
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
-<body ng-controller="UserCtrl">
+<body ng-controller="ItemCtrl">
 	<hr>
 
 	<div>
@@ -49,7 +49,7 @@
 					<td>Delete</td>
 				</tr>
 
-				<tr ng-repeat="user in users">
+				<tr ng-repeat="user in items">
 					<td>{{user.id}}</td>
 					<td>{{user.storeCode}}</td>
 					<td>{{user.name}}</td>
