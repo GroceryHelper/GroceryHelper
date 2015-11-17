@@ -1,0 +1,68 @@
+
+<html ng-app="cs480App">
+<!-- This page uses AngularJS -->
+<head>
+<title>Grocery Testing Page</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="/js/home-control-ajs.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body ng-controller="UserCtrl">
+	<hr>
+
+	<div>
+		
+		<div>
+			<label>Add Item</label>
+			<table border="1">
+				<tr>
+					<td>ID</td>
+					<td>Store Code</td>
+					<td>Item Name</td>
+					<td>Price</td>
+					<td>Add</td>
+				</tr>
+				<tr>
+					<td><input type="text" ng-model="new_id"></td>
+					<td><input type="text" ng-model="new_storeCode"></td>
+					<td><input type="text" ng-model="new_name"></td>
+					<td><input type="text" ng-model="new_price"></td>
+					<td><button ng-click="addItem()">Add</button></td>
+				</tr>
+			</table>
+		</div>
+		
+		<hr>
+		
+		<div>
+
+			<label>Item List</label>
+			<table border="1">
+				<tr>
+					<td>ID</td>
+					<td>Store Code</td>
+					<td>Item Name</td>
+					<td>Price</td>
+					<td>Creation Time</td>
+					<td>Delete</td>
+				</tr>
+
+				<tr ng-repeat="user in users">
+					<td>{{user.id}}</td>
+					<td>{{user.storeCode}}</td>
+					<td>{{user.name}}</td>
+					<td>{{user.price}}</td>
+					<td>{{user.creationTime}}</td>
+					<td><button ng-click="deleteItem(user.id)">Delete</button></td>
+				</tr>
+			</table>
+		</div>
+
+		<hr>
+		
+	</div>
+</body>
+
+</html>

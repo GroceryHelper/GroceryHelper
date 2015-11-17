@@ -29,14 +29,12 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
 	  		$scope.loadUsers();
 	  	});
   }
-  
 
   var count = 0;
  function getId() {
 	 return count++;
  }
 
-  
   // works
   $scope.deleteItem = function(itemId) {
 	  $http.delete("cs480/item/" + itemId)
@@ -56,6 +54,4 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
 	  	});
   }
 
-
-  
 });

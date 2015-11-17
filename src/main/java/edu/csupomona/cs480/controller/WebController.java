@@ -151,8 +151,6 @@ public class WebController {
 		return item;
 	}
 	
-	
-	
 
 	/**
 	 * This is an example of sending an HTTP POST request to
@@ -175,6 +173,7 @@ public class WebController {
 	@RequestMapping(value = "/cs480/item/{itemId}", method = RequestMethod.POST)
 	Item updateItem(
 			@PathVariable("itemId") String id,
+//			@PathVariable(getId()) String id,
 			@RequestParam("storeCode") String code,
 			@RequestParam(value="name", required = false) String name,
 			@RequestParam(value = "price", required = false) String price) {
@@ -185,6 +184,11 @@ public class WebController {
 		item.setName(name);
 		itemManager.updateItem(item);
 		return item;
+	}
+	
+	static int count = 0;
+	String getId() {
+		return Integer.toString(count++);
 	}
 	
 	// this is to save zip user entered
