@@ -64,4 +64,33 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 			$scope.zip = data;
 		});
 	}
+	
+	var groceryList;
+	$scope.completeList = function(list) {
+		var array = list.split(",");
+		groceryList = array;
+		var arrayOfLines = $('list').val().split('\n');
+		return arrayOfLines;
+	}
+	
+	$scope.itemFunction = function(item)
+	{
+	    // Do some tests
+		var bool = 0;
+		
+		for (i = 0; i < $scope.items.length; i++) { 
+		    if (groceryList[i]==item){
+		    	bool = 1;
+		    }
+		}
+	    return bool; 
+	};
+	
+	var idx = -43;
+	$scope.getItemIdx = function(){
+		console.log("index is ", idx);
+		return idx++;
+	}
+	
+	
 });
