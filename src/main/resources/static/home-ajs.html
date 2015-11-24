@@ -10,8 +10,8 @@
 </head>
 
 <body ng-controller="ItemCtrl">
-	<hr>
 
+	<hr>
 	<div>
 		<label>ZIP : </label><input type="text" id="zip_code"
 			ng-model="zipEntered">
@@ -36,9 +36,7 @@
 				<td><button ng-click="deleteItem(user.id)">Delete</button></td>
 			</tr> -->
 		</div>
-			
 		<hr>
-
 		<div>
 <!-- 			<label>Search Item</label>
 			userIdToSearch
@@ -59,24 +57,35 @@
 				</tr>
 				<!-- <tr ng-repeat="item in items | filter:itemNameToSearch | filter:storeToSearch"> -->
 				
-				
-					<pre>{{list}}</pre>
+				<pre>{{list}}</pre>
+				<pre>{{getItemIdx()}}</pre>
 					
-
-				
 				<tr ng-repeat="item in items | filter:list[0] | filter:storeToSearch">
 					<!-- <td><label>{{user.id}}</label></td> -->
+					<div ng-if="i !== 0">
 					<td><label>{{item.name}}</label></td>
 					<td><label>{{item.price}}</label></td>
 					<td><label>{{item.storeCode}}</label></td>
 				</tr>
 			
 				<tr ng-repeat="item in items | filter:list[1] | filter:storeToSearch">
-					
 					<td><label>{{item.name}}</label></td>
 					<td><label>{{item.price}}</label></td>
 					<td><label>{{item.storeCode}}</label></td>
 				</tr>
+				
+				<tr ng-repeat="item in items | filter:list[2] | filter:storeToSearch">
+					<td><label>{{item.name}}</label></td>
+					<td><label>{{item.price}}</label></td>
+					<td><label>{{item.storeCode}}</label></td>
+				</tr>
+				
+				<tr ng-repeat="item in items | filter:list[3] | filter:storeToSearch">
+					<td><label>{{item.name}}</label></td>
+					<td><label>{{item.price}}</label></td>
+					<td><label>{{item.storeCode}}</label></td>
+				</tr>
+				
 			</table>
 		</div>
 		<hr>

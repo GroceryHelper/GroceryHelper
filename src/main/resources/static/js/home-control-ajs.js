@@ -89,8 +89,6 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 	var idx = -43;
 	$scope.getItemIdx = function(){
 		console.log("index is ", idx);
-		return idx++;
+		return ++idx;
 	}
-	
-	
 });

@@ -14,19 +14,17 @@ public class UserTest {
 	@Test
 	public void test() {
 		String id = "0101010";
-		String name = "GroceryHelper";
-		String major = "CS";
+		String storeName = "GroceryHelper";
+		String price = "CS";
 		String creationTime = new Date(System.currentTimeMillis()).toString();
 		
-		Item user = new Item();
-		user.setId(id);
-		user.setName(name);
-		user.setPrice(major);
-		user.setCreationTime(creationTime);
+		// builder pattern
+		Item user = new Item.Builder(id).storeCode(storeName).price(price).build();
+		
 		
 		Assert.assertEquals(id, user.getId());
-		Assert.assertEquals(name, user.getName());
-		Assert.assertEquals(major, user.getPrice());
+		Assert.assertEquals(storeName, user.getStoreCode());
+		Assert.assertEquals(price, user.getPrice());
 		Assert.assertEquals(creationTime, user.getCreationTime());
 		
 	}

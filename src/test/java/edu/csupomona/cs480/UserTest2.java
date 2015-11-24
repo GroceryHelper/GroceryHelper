@@ -15,21 +15,16 @@ public class UserTest2 {
 	@Test
 	public void test() {
 		String id = "1111";
-		String name = "Samuel";
-		String major = "CS";
+		String storeName = "Samuel";
+		String price = "CS";
 		String creationTime = new Date(System.currentTimeMillis()).toString();
 		
-		Item user = new Item();
-		user.setId(id);
-		user.setName(name);
-		user.setPrice(major);
-		user.setCreationTime(creationTime);
+		Item user = new Item.Builder(id).storeCode(storeName).price(price).build();
 		
 		Assert.assertEquals(id, user.getId());
-		Assert.assertEquals(name, user.getName());
-		Assert.assertEquals(major, user.getPrice());
-		Assert.assertEquals(creationTime, user.getCreationTime());
-		
+		Assert.assertEquals(storeName, user.getStoreCode());
+		Assert.assertEquals(price, user.getPrice());
+		Assert.assertEquals(creationTime, user.getCreationTime());		
 	}
 
 }

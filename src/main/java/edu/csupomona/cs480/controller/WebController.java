@@ -174,12 +174,14 @@ public class WebController {
 			@RequestParam("storeCode") String code,
 			@RequestParam(value="name", required = false) String name,
 			@RequestParam(value = "price", required = false) String price) {
-		Item item = new Item();
-		item.setId(id);
-		item.setStoreCode(code);
-		item.setPrice(price);
-		item.setName(name);
-		itemManager.updateItem(item);
+		
+		// Builder pattern
+		Item item = new Item.Builder(id).storeCode(code).price(price).name(name).build();
+//		item.setId(id);
+//		item.setStoreCode(code);
+//		item.setPrice(price);
+//		item.setName(name);
+//		itemManager.updateItem(item);
 		return item;
 	}
 	
