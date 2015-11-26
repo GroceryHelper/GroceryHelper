@@ -170,18 +170,18 @@ public class WebController {
 	@RequestMapping(value = "/cs480/item/{itemId}", method = RequestMethod.POST)
 	Item updateItem(
 			@PathVariable("itemId") String id,
-//			@PathVariable(getId()) String id,
 			@RequestParam("storeCode") String code,
 			@RequestParam(value="name", required = false) String name,
 			@RequestParam(value = "price", required = false) String price) {
 		
-		// Builder pattern
-		Item item = new Item.Builder(id).storeCode(code).price(price).name(name).build();
-//		item.setId(id);
-//		item.setStoreCode(code);
-//		item.setPrice(price);
-//		item.setName(name);
-//		itemManager.updateItem(item);
+
+//		Item item = new Item.Builder(id).storeCode(code).price(price).name(name).build();
+		Item item = new Item();
+		item.setId(id);
+		item.setStoreCode(code);
+		item.setPrice(price);
+		item.setName(name);
+		itemManager.updateItem(item);
 		return item;
 	}
 	

@@ -86,6 +86,11 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 	    return bool; 
 	};
 	
+	$scope.getNumofItemsInList = function() {
+		var obj = $scope.list; 
+		$scope.len = obj.length;
+	};
+	
 	var idx = -43;
 	$scope.getItemIdx = function(){
 		console.log("index is ", idx);

@@ -18,8 +18,14 @@ public class UserTest {
 		String price = "CS";
 		String creationTime = new Date(System.currentTimeMillis()).toString();
 		
-		// builder pattern
-		Item user = new Item.Builder(id).storeCode(storeName).price(price).build();
+		
+//		Item user = new Item.Builder(id).storeCode(storeName).price(price).build();
+		
+		Item user = new Item();
+		user.setId(id);
+		user.setName(storeName);
+		user.setCreationTime(creationTime);
+		user.setPrice(price);
 		
 		
 		Assert.assertEquals(id, user.getId());

@@ -58,33 +58,28 @@
 				<!-- <tr ng-repeat="item in items | filter:itemNameToSearch | filter:storeToSearch"> -->
 				
 				<pre>{{list}}</pre>
-				<pre>{{getItemIdx()}}</pre>
+				<!-- <pre>{{getItemIdx()}}</pre> -->
 					
-				<tr ng-repeat="item in items | filter:list[0] | filter:storeToSearch">
-					<!-- <td><label>{{user.id}}</label></td> -->
-					<div ng-if="i !== 0">
-					<td><label>{{item.name}}</label></td>
-					<td><label>{{item.price}}</label></td>
-					<td><label>{{item.storeCode}}</label></td>
-				</tr>
-			
-				<tr ng-repeat="item in items | filter:list[1] | filter:storeToSearch">
-					<td><label>{{item.name}}</label></td>
-					<td><label>{{item.price}}</label></td>
-					<td><label>{{item.storeCode}}</label></td>
-				</tr>
+				<tr ng-repeat="searchItem in list">
 				
-				<tr ng-repeat="item in items | filter:list[2] | filter:storeToSearch">
-					<td><label>{{item.name}}</label></td>
-					<td><label>{{item.price}}</label></td>
-					<td><label>{{item.storeCode}}</label></td>
-				</tr>
-				
-				<tr ng-repeat="item in items | filter:list[3] | filter:storeToSearch">
-					<td><label>{{item.name}}</label></td>
-					<td><label>{{item.price}}</label></td>
-					<td><label>{{item.storeCode}}</label></td>
-				</tr>
+					<td><label>{{searchItem}}</label></td>
+					
+					<tr ng-repeat="item in items | filter:list[0] | filter:storeToSearch">
+						<!-- <td><label>{{user.id}}</label></td>  -->
+						<div ng-if="i !== 0">
+						<td><label>{{item.name}}</label></td>
+						<td><label>{{item.price}}</label></td>
+						<td><label>{{item.storeCode}}</label></td>
+					</tr>
+					<tr ng-repeat="item in items | filter:list[1] | filter:storeToSearch">
+						<!-- <td><label>{{user.id}}</label></td>  -->
+						<div ng-if="i !== 0">
+						<td><label>{{item.name}}</label></td>
+						<td><label>{{item.price}}</label></td>
+						<td><label>{{item.storeCode}}</label></td>
+					</tr>
+					
+				</tr>					
 				
 			</table>
 		</div>

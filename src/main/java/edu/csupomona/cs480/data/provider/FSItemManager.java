@@ -40,10 +40,13 @@ public class FSItemManager implements ItemManager {
 	private ItemMap getItemMap() {
 		ItemMap itemMap = null;
 		File userFile = ResourceResolver.getItemFile();
+		System.out.println("Files? " + userFile.getName());
+		System.out.println("file exist? " + userFile.exists());
 		if (userFile.exists()) {
 			// read the file and convert the JSON content
 			// to the UserMap object
 			try {
+				
 				itemMap = JSON.readValue(userFile, ItemMap.class);
 			} catch (IOException e) {
 				e.printStackTrace();
