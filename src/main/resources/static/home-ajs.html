@@ -1,22 +1,52 @@
 
-<html ng-app="cs480App">
+<html ng-app="cs480App"
 <!-- This page uses AngularJS -->
-<head>
-<title>Grocery Testing Page</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-<script src="/js/home-control-ajs.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>Grocery Testing Page</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script src="/js/home-control-ajs.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+<!--
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+-->
 </head>
 
 <body ng-controller="ItemCtrl">
 
-	<hr>
-	<div>
-		<label>ZIP : </label><input type="text" id="zip_code"
+	<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">Grocery Helper</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="admin-ajs.html">Admin</a></li>
+					</ul>
+				</nav>
+			</header>
+
+	<!-- Main -->
+		<section id = "main" class = "wrapper">
+		<hr>
+		<div class ="container">
+		
+			<label>ZIP : </label><input type="text" id="zip_code"
 			ng-model="zipEntered">
 		<hr>
-
+		
+		
 		<!-- Fix it later -->
 		<label>Zip you entered: </label><pre>{{zipEntered}}</pre>
 		<button ng-click="saveZip()">OK</button>
