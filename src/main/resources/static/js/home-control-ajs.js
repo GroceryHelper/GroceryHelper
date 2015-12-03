@@ -6,15 +6,13 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 
 //	changed into something related to items
 
-
-	// works
 	$scope.loadItems = function() {
 		$http.get("cs480/items/list")
 		.success(function(data){
 			$scope.items = data;
 		});
 	}
-	// works
+
 	$scope.getItem = function() {
 		$http.get("cs480/item/" + $scope.userIdToSearch)
 		.success(function(data){
@@ -22,7 +20,6 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 		});
 	}
 
-	// works
 	$scope.addItem = function() {
 		$scope.new_id = guid();
 		$http.post("cs480/item/"  + $scope.new_id + "?storeCode=" + $scope.new_storeCode + "&name=" + $scope.new_name + "&price=" + $scope.new_price)
@@ -46,16 +43,14 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 		s4() + '-' + s4() + s4() + s4();
 	}
 
-	// works
 	$scope.deleteItem = function(itemId) {
 		$http.delete("cs480/item/" + itemId)
 		.success(function(data){
 			$scope.loadItems();
 		});
 	}
-	// dont know what it exactly does
+	
 	$scope.loadItems();
-
 
 	// below is related to zip code
 	$scope.saveZip = function() {
@@ -91,9 +86,34 @@ cs480App.controller('ItemCtrl', function ($scope, $http) {
 		$scope.len = obj.length;
 	};
 	
-	var idx = -43;
-	$scope.getItemIdx = function(){
-		console.log("index is ", idx);
-		return ++idx;
-	}
+	$scope.createGroceryList = function() {
+	  for (i=0; i < $scope.list.length; i++) {
+		  
+	  }
+	};	
+	
+	$scope.findItems = function() {
+
+		var itemsFound = [];
+		for (j=0; j<$scope.list.length; j++) {
+			for (k=0; k<$scope.storeList.length; k++) {
+				for (i=0; i< $scope.items.length ; i++) {
+					
+					if ($scope.items[i].storeCode.toUpperCase() == $scope.storeList[k].toUpperCase()) {
+					   if ($scope.items[i].name.toUpperCase() == $scope.list[j].toUpperCase()) {
+					       var itemFound = $scope.items[i];
+					       itemsFound.push(itemFound);
+					       console.log('item found is ' + $scope.items[i].name);
+					   }
+					}
+				}
+			}
+		   
+		}
+		console.log('itemstoreturn ' + itemsFound);
+		$scope.itemsToReturn = itemsFound;
+	};
+	
+	$scope.list1 = {title: 'AngularJS - Drag Me'};
+	$scope.list2 = {};
 });

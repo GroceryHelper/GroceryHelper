@@ -22,7 +22,6 @@ import com.google.common.collect.Table;
 import com.google.common.collect.Tables;
 
 import edu.csupomona.cs480.App;
-import edu.csupomona.cs480.data.GroceryList;
 import edu.csupomona.cs480.data.Item;
 import edu.csupomona.cs480.data.provider.ItemManager;
 

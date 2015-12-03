@@ -12,7 +12,6 @@ public class Item {
 
 	/** The unique user Id */
     private String id;
- // storeCode are 1, 2, 3 for now
     private String storeCode;
     /** The unique user Id */
     private String name;
@@ -78,6 +77,7 @@ public class Item {
 		return storeCode;
 	}
 
+	
 	public void setStoreCode(String storeCode) {
 		this.storeCode = storeCode;
 	}

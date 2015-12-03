@@ -9,17 +9,7 @@ cs480App2.controller('AdminPageCtrl', function ($scope, $http) {
 		  		$scope.users = data;
 		  	});
 	  }
-//  
-//  $scope.select = function() {
-////	  $http.
-//  }
-  // works
-//  $scope.getItem = function() {
-//	  $http.get("cs480/item/" + $scope.userIdToSearch)
-//	  	.success(function(data){
-//	  		$scope.founduser = data;
-//	  	});
-//  }
+
 
   $scope.addItem = function() {
 	  $http.post("cs480/item/" + $scope.new_id + "?storeCode=" + $scope.new_storeCode + "&name=" + $scope.new_name + "&price=" + $scope.new_price)

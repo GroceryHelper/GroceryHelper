@@ -19,9 +19,7 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
-<!--
-<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
--->
+
 </head>
 
 <body ng-controller="ItemCtrl">
@@ -41,13 +39,10 @@
 		<hr>
 		<div class ="container">
 		
-			<label>ZIP : </label><input type="text" id="zip_code"
+			<label>ZIP Code : </label><input type="text" id="zip_code"
 			ng-model="zipEntered">
 		<hr>
-		
-		
-		<!-- Fix it later -->
-		<label>Zip you entered: </label><pre>{{zipEntered}}</pre>
+		<label>ZIP Code you entered: </label><pre>{{zipEntered}}</pre>
 		<button ng-click="saveZip()">OK</button>
 		<hr>
 		
@@ -56,57 +51,33 @@
 			<hr>
 			<textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
 			<!-- <pre>{{ list | json }}</pre> -->
-			<td><button ng-click="completeList(list)">Okay</button></td>
+			<!-- <td><button ng-click="createGroceryList()">Create Grocery List</button></td> -->
 			
-			<!-- <pre>{{list[0]}}</pre>
-			<pre>{{completList(list)}}</pre> -->
-			<!-- <tr ng-repeat="item in list">
-				<td>{{item}}</td>
-				<td><button ng-click="deleteItem(user.id)">Delete</button></td>
-			</tr> -->
+			
+			<label>Add grocery stores</label>
+			<hr>
+			<textarea ng-model="storeList" ng-list="&#10;" ng-trim="false"></textarea>
+			<!-- <td><button ng-click="createGroceryList()">Create Store List</button></td> -->
+			<hr>
+			<button style="font-size : 20px; width: 50%; height: 50px;"" ng-click="findItems()">Return Result</button>
+			
 		</div>
 		<hr>
+		
 		<div>
-<!-- 			<label>Search Item</label>
-			userIdToSearch
-			<input type="text" id="query_id" ng-model="itemNameToSearch">
 			
-			<label>Search Store</label>
-			
-			<input type="text" id="query_store" ng-model="storeToSearch">
-			
-			<button ng-click="loadItems()">Get</button> -->
-			<hr>
 			<table border="1" align="center">
+				
 				<tr>
-					<!-- <td>ID</td> -->
-					<td>Name</td>
+					<td>Item</td>
 					<td>Price</td>
-					<td>Store Code</td>
+					<td>Store</td>
 				</tr>
-				<!-- <tr ng-repeat="item in items | filter:itemNameToSearch | filter:storeToSearch"> -->
-				
-				<!-- <pre>{{list}}</pre> -->
-				<!-- <pre>{{getItemIdx()}}</pre> -->
-					
-				<tr ng-repeat="searchItem in list">
-				
-					<!-- <td><label>{{searchItem}}</label></td> -->
-					
-					<tr ng-repeat="item in items | filter:list[0] | filter:storeToSearch">
-						<!-- <td><label>{{user.id}}</label></td>  -->
-						<div ng-if="i !== 0">
-						<td><label>{{item.name}}</label></td>
-						<td><label>{{item.price}}</label></td>
-						<td><label>{{item.storeCode}}</label></td>
-					</tr>
-					<tr ng-repeat="item in items | filter:list[1] | filter:storeToSearch">
-						<!-- <td><label>{{user.id}}</label></td>  -->
-						<div ng-if="i !== 0">
-						<td><label>{{item.name}}</label></td>
-						<td><label>{{item.price}}</label></td>
-						<td><label>{{item.storeCode}}</label></td>
-					</tr>
+				<tr ng-repeat="item in itemsToReturn" >
+					<td><label>{{item.name}}</label>	
+					<td><label>{{item.price}}</label></td>
+					<td><label>{{item.storeCode}}</label></td>
+				</tr>				
 					
 				</tr>					
 				

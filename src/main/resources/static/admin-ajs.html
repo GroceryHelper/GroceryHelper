@@ -7,6 +7,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 <script src="/js/home-control-ajs.js"></script>
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+
 </head>
 
 <body ng-controller="ItemCtrl">
@@ -23,7 +24,13 @@
 					<td>Add</td>
 				</tr>
 				<tr>
-					<td><input type="text" ng-model="new_storeCode"></td>
+					<td><select name="singleSelect" id="singleSelect" ng-model="new_storeCode">
+      					<option value="">---Please select---</option> <!-- not selected / blank option -->
+      					<option value="Albertsons">Albertsons</option> <!-- interpolation -->
+      					<option value="Kroger">Kroger</option>
+      					<option value="Trader Joe's">Trader Joe's</option>
+      					<option value="Vons">Vons</option>
+    				</select></td>
 					<td><input type="text" ng-model="new_name"></td>
 					<td><input type="text" ng-model="new_price"></td>
 					<td><button ng-click="addItem()">Add</button></td>

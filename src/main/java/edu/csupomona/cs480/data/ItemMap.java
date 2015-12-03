@@ -16,8 +16,6 @@ import java.util.HashMap;
  *
  */
 @SuppressWarnings("serial")
-
-//public class ItemMap extends HashMap<Integer, Item> {
 public class ItemMap extends HashMap<String, Item> {
 
 }
